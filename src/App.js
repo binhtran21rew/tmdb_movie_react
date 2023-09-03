@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Register from "./pages/register/Register";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+
+import publicRoute from "./config/Routes";
+import Header from "./components/header/Header";
+import './App.scss';
+import './assets/boxicons-2.0.7/css/boxicons.min.css';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          {publicRoute.map((route, i) => {
+            const Page = route.component;
+            return (
+              <Route 
+                key={i}
+                path={route.path}
+                element={
+                  <>
+                  <Header />
+                    <Page />
+                  </>
+                }
+              />
+            )
+          })}
+        </Routes>
+
+      </div>
+    </BrowserRouter>
+
   );
 }
 

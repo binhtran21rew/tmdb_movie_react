@@ -1,0 +1,63 @@
+@use '../../scss/' as *;
+.login{
+    &:hover{
+        border-color: #91fe91;
+    }
+    padding: 100px;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    border: 5px solid $white;
+    border-radius: $border-radius;
+    width: 50%;
+
+    label{
+        font-weight: 500;
+        font-size: 1.2rem;    
+    }
+    .input{
+        &__password{
+           
+            position: relative;
+
+            &::after{
+                content: "";
+                position: absolute;
+                width: 1px;
+                top: $search-top-spacer;
+                right: $width_search-btn;
+                height: calc($search-height - $search-top-spacer)  ;
+                background-color: rgba(22, 24, 35, 0.2);
+            }
+
+            &__display{
+                cursor: pointer;
+                position: absolute;
+                top: 60%;
+                transform: translateY(-60%);
+                right: calc($width_search-btn - 39px);
+                background-color: transparent;
+                color: $black;
+                padding: 10px;
+            }
+        }
+
+        
+    }
+   
+    .tag{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .link{
+            font-size: 1.3rem;
+            text-decoration: underline;
+        }
+    }
+
+
+
+}

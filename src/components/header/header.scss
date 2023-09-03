@@ -1,0 +1,62 @@
+@use '../../scss/' as *;
+
+.header{
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    transition: height .3 ease, background-color .3 ease;
+
+    .logo{
+        font-size: 1.5rem;
+        font-weight: normal;
+        @include flex(center, unset);
+        img{
+            margin-right: 10px;
+            width: 50px;
+        }
+    }
+
+    &.shrink{
+        height: $header-shrink-height;
+        background-color: $body-bg;
+    }
+
+    &__warp{
+        @include flex(center, space-between);
+        height: 100%;
+        pad: 0 2rem;
+    }
+
+    &__nav{
+        @include flex(center, unset);
+        & > * ~ * {
+            margin-left: 2rem;
+        }
+
+        li{
+            list-style: none;
+            padding: 5px 0;
+            position: relative;
+            font-size: 1.5rem;
+
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: width .5s ease;
+                width: 0;
+                height: 2px;
+                background-color: $main-color;
+            }
+            &.active::after,
+            &:hover::after{
+                width: 100%;
+            }
+        }
+    }
+}

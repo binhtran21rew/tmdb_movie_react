@@ -1,0 +1,54 @@
+@use '../../../../scss/' as *;
+
+.add{
+
+    .add-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 3rem;
+
+        span{
+            width: 100%;
+            @include flex(center, center);
+        }
+    }
+
+    .input__wrapper{
+        position: relative;
+        width: 100%;
+        min-width: 500px;
+        
+        input{
+            width: 100%;
+            padding-right: 8rem;
+
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            width: 2px;
+            top: $search-top-spacer;
+            right: $width-button;
+            height: calc($search-height - $search-top-spacer)  ;
+            background-color: rgba(22, 24, 35, 0.2);
+        }
+
+        button{
+            position: absolute;
+            padding: .4rem 2rem;
+            right: 0;
+            top: 0;
+            width: $width-button;
+            border-radius: 0 $border-radius $border-radius 0  ;
+
+            &:hover{
+                background-color: rgba($color: $black, $alpha: 0.3);
+                transition: background-color .3s ease;
+            }
+        }
+    }
+
+
+
+}
