@@ -19,6 +19,16 @@
         transform: translate(-50%, -50%) scale(0);
         transition: transform .3s ease, box-shadow .3s ease;
     
+
+        &:disabled{
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            color: $black;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
     }
     &::before{
         content: "";

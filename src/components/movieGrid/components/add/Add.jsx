@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router';
 
 import './add.scss';

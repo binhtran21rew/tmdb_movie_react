@@ -6,6 +6,8 @@ import publicRoute from "./config/Routes";
 import Header from "./components/header/Header";
 import './App.scss';
 import './assets/boxicons-2.0.7/css/boxicons.min.css';
+import { GlobalContext } from "./context/GlobalState";
+
 function App() {
   return (
     <BrowserRouter>
