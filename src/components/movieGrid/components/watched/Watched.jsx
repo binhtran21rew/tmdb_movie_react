@@ -7,25 +7,24 @@ import {GlobalContext} from '../../../../context/GlobalState';
 import apiConfig from '../../../../api/apiConfig';
 import tmdbApi from '../../../../api/tmdbApi';
 
-import './watchList.scss';
+import './watched.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faXmarkSquare } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faXmarkSquare } from '@fortawesome/free-solid-svg-icons';
 
-const WatchList = props => {   
-    const {watchlist} = useContext(GlobalContext);
+const Watched = props => {   
+    const {watched} = useContext(GlobalContext);
 
     return (
         <div className="watchList">
             {
-               watchlist.length > 0 ? (
-                watchlist.map((item, i) => (
-                    <MovieCardList item={item} key={i}> 
-                        <ActionList movie={item} /> 
-                    </MovieCardList>
-
+               watched.length > 0 ? (
+                watched.map((item, i) => (
+                    <MovieCardList item={item} key={i}>
+                        <ActionList movie={item} />
+                    </MovieCardList> 
                 ))
                ) : (
-                <h2 className='watchList__none'>No movies in your list.
+                <h2 className='watchList__none'>You don't watched any movies.
                     <Link to='/addList/Page' className='watchList__link'>Make your list movie?</Link>
                 </h2>
                )
@@ -36,20 +35,20 @@ const WatchList = props => {
 
 const ActionList = (props) => {
     const movie = props.movie;
-    const {removeMovieFromWatchList, addMovieToWatched} = useContext(GlobalContext);
+    const {removeFromWatched, movieToWatchList} = useContext(GlobalContext);
     
 
     const handleRemove = () => {
-        removeMovieFromWatchList(movie.id)
+        removeFromWatched(movie.id)
     }
     const handleWatched = () => {
-        addMovieToWatched(movie);
+        movieToWatchList(movie);
     }
     
     return (
         <div className="watchList__poster__image__icon">
             <FontAwesomeIcon 
-                icon={faEye} 
+                icon={faEyeSlash} 
                 onClick={handleWatched}
             />
             <FontAwesomeIcon 
@@ -57,7 +56,8 @@ const ActionList = (props) => {
                 onClick={handleRemove}
             />
         </div>
+
     )
 }
 
-export default WatchList;
+export default Watched;

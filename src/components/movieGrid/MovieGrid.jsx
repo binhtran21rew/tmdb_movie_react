@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import './movieGrid.scss';
 import Add from './components/add/Add';
 import WatchList from './components/watchList/WatchList';
+import Watched from './components/watched/Watched';
 
 const MovieGrid = props => {
     // const {category} = useParams();
@@ -17,7 +18,7 @@ const MovieGrid = props => {
                 )
             case 'watched':
                 return (
-                    <>3</>
+                    <Watched category='watched'/>
                 )
             default: return (
                 <Add category='addList'/>

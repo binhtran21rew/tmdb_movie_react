@@ -35,7 +35,9 @@ const Add = props => {
                 <div className="add-grid">
                 {   
                     items.length  > 0 ?
-                    items.map((item,i) => <MovieCard category={props.category} item={item} key={i} />)
+                    items.map((item,i) => 
+                        <MovieCard category={props.category} item={item} key={i} />
+                    )
                     : 
                         <span> No Record</span>
                 }
