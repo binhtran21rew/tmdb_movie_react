@@ -9,7 +9,7 @@ const Catelogs = () => {
     return (
         <div>
             <PageHeader>
-                {category}
+                My {category}
             </PageHeader>
             <div className="container">
                 <div className="section mb-3">

@@ -8,6 +8,10 @@ const tmdbApi = {
     search: (params) => {
         const url = 'search/movie';
         return axiosClient.get(url, params);
+    },
+    detail: (id, params) => {
+        const url = 'movie/' + id;
+        return axiosClient.get(url, {params:{}});
     }
 }
 

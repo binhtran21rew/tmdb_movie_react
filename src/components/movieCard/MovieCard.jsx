@@ -25,9 +25,7 @@ const MovieCard = props => {
                     disabled={watchlistDisabled}
                     onClick={() => addMovieToWatchList(item)}
                 >
-                    
-                    Add List
-                  
+                    Add List 
                 </Button>
             </div>
             <h3>{item.title || item.name}</h3>

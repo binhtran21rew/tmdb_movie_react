@@ -4,15 +4,16 @@ import { useParams } from 'react-router-dom';
 
 import './movieGrid.scss';
 import Add from './components/add/Add';
+import WatchList from './components/watchList/WatchList';
 
 const MovieGrid = props => {
-    const {category} = useParams();
+    // const {category} = useParams();
 
     const renderPage = (cate) => {
         switch(cate){
             case 'watchList':
                 return (
-                    <>2</>
+                    <WatchList category='watchList'/>
                 )
             case 'watched':
                 return (

@@ -1,0 +1,130 @@
+@use '../../../../scss/' as *;
+
+.watchList{
+    &__link{
+        margin-left: 1rem;
+        color: rgb(250, 137, 137)
+    }
+    &__item{
+        @include flex(flex-start, flex-start);
+        max-width: 1260px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 10rem 2rem 10rem;
+        position: relative;
+
+        &::after{
+            content: "";
+            position: absolute;
+            width: 50%;
+            bottom: 2px;
+            transform: translateX(50%);
+            margin-bottom: 1rem;
+            left: 0;
+            border: 1px solid $main-color;
+        }
+    }
+
+    &__poster{
+        margin-right: 2rem;
+        position: relative;
+        &__image{
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: $border-radius;
+            max-width: 350px;
+            min-width: 150px;
+
+
+            &__icon{
+                position: absolute;
+                top: 50%;
+                bottom: 0;
+                left: 50%;
+                font-size: 2rem;
+                transform: translateX(-50%) scale(0);
+                transition: transform .3s ease, box-shadow .3s ease;
+                color: $white;
+                :hover{
+                   cursor: pointer;
+                   color: $main-color;
+                   padding: 5px;
+                }
+                & > * ~ *{
+                    margin-left: 3rem;
+                    
+                }
+            }
+
+            
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: $black;
+            opacity: 0;
+            
+            transition: opacity .3 ease;
+            border-radius: $border-radius;
+            
+        }
+        @media (hover: hover) and (pointer: fine){
+            &:hover::before{
+                opacity: .8;
+            }
+            &:hover &__image__icon{
+                
+
+                transform: translate(-50%) scale(1);
+            }
+        }
+        
+
+    }
+
+    &__content{
+        width: 70%;
+        padding-left: 2rem;
+        position: relative;
+
+        & > *{
+            margin-bottom: 2rem;
+        }
+
+        .name{
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .overview{
+            line-height: 1.5;
+        }
+
+        .rated{
+           
+            &__item{
+                width: 250px;
+                padding: .5rem 1.5rem;
+                border: 2px solid $white;
+                border-radius: $border-radius;
+                font-size: 0.8rem;
+                font-weight: 600;
+                background-color: $body-bg;
+                margin-bottom: .5rem;
+
+                span{
+                    color: $main-color;
+                    font-weight: 400;
+                    margin-right: .5rem;
+                }
+            }
+
+           
+        }
+    }
+}
