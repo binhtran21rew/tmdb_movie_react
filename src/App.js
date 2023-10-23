@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import axios from 'axios';
+
+// import publicRoute from './config/Routes';
+import './App.scss';
+
+import PublicRoute from './config/PublicRoute';
+import AdminRoute from './config/AdminRoute';
+
+import LoginPage from './layouts/pageLayout/LoginPage';
+import RegisterPage from './layouts/pageLayout/RegisterPage';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+      <Switch>
+
+        <Route path='/login'>
+          { 
+            localStorage.getItem('auth_token') ? <Redirect to='/'/> : <LoginPage/>
+          }
+        </Route>
+        <Route path='/register'>
+          {localStorage.getItem('auth_token') ? <Redirect to='/'/> : <RegisterPage/>}
+        </Route>
+        
+        <AdminRoute path="/admin"  name= "Admin"/>
+
+        <PublicRoute path="/" name="Home"/>
+
+
+
+      </Switch>
+
+    
+    </BrowserRouter>
+      
   );
 }
 
